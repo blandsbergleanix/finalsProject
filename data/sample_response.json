@@ -1,0 +1,154 @@
+{
+    "data": {
+      "allFactSheets": {
+        "edges": [
+          {
+            "node": {
+              "id": "d575e1ad-3647-466d-93c7-4b5b444f5fbc",
+              "relInterfaceToProviderApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "AC Management",
+                        "id": "7fbc5171-2680-42e5-8bd3-a9f5e666d0e2"
+                      }
+                    }
+                  }
+                ]
+              },
+              "relInterfaceToConsumerApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "HR Admin",
+                        "id": "a78bb927-eeb8-4c68-a1ca-22ac1096b92b"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "id": "fe43138b-7b4c-46f8-8ea7-7539564de594",
+              "relInterfaceToProviderApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "AutoCAD",
+                        "id": "802a81fe-88c2-4a85-b4ae-94dc333cd671"
+                      }
+                    }
+                  }
+                ]
+              },
+              "relInterfaceToConsumerApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "DocMan",
+                        "id": "0a3aa100-66bd-4009-bdc2-d9ad91bd52d7"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "id": "5c3df8e2-08eb-44e5-abbd-f80119c964eb",
+              "relInterfaceToProviderApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "Bonus Card Americas",
+                        "id": "5ee75714-3cae-452d-8e4a-0993cd20d6a4"
+                      }
+                    }
+                  }
+                ]
+              },
+              "relInterfaceToConsumerApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "Bonus Card Use Watch",
+                        "id": "6d56fc6f-b9fb-4eaa-9e26-e1daa93cf518"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "id": "d3776a8c-f13c-4a8e-b297-ff0dbf966b28",
+              "relInterfaceToProviderApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "Bonus Card Asia/Pacific",
+                        "id": "af881e88-a24f-4961-ae21-9cc8eb996d71"
+                      }
+                    }
+                  }
+                ]
+              },
+              "relInterfaceToConsumerApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "Bonus Card Use Watch",
+                        "id": "6d56fc6f-b9fb-4eaa-9e26-e1daa93cf518"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "id": "7c2b54bd-63b6-4ddb-be3b-3ea407d8ac76",
+              "relInterfaceToProviderApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "Bonus Card Europe",
+                        "id": "f59774d5-381c-4ec9-bee6-86c1daad9174"
+                      }
+                    }
+                  }
+                ]
+              },
+              "relInterfaceToConsumerApplication": {
+                "edges": [
+                  {
+                    "node": {
+                      "factSheet": {
+                        "name": "Bonus Card Use Watch",
+                        "id": "6d56fc6f-b9fb-4eaa-9e26-e1daa93cf518"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "errors": null
+  }
