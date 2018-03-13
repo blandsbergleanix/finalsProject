@@ -8,6 +8,8 @@ function aggregateApplicationMatrix (providingMultimap, consumingMultimap) {
   Object.keys(consumingMultimap).forEach(consumer => {
     if (aggregatedMultimap[consumer] === undefined) {
       aggregatedMultimap[consumer] = { providing: 0, consuming: consumingMultimap[consumer].length, total: 0 }
+    } else {
+      aggregatedMultimap[consumer].consuming = consumingMultimap[consumer].length
     }
   })
   // add sum of connected applications to application
