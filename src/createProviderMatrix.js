@@ -1,4 +1,4 @@
-function count (interfaces) {
+function createProviderMatrix (interfaces) {
   var providingMultiMap = {}
   // TODO extract providingMultiMap[providerId] into variable
   interfaces.forEach(interfaceNode => {
@@ -18,4 +18,4 @@ function count (interfaces) {
 
   return providingMultiMap
 }
-module.exports = count
+module.exports = createProviderMatrix
