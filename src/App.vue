@@ -16,6 +16,7 @@
 <script>
 import Vue from 'vue'
 import TableComponent from 'vue-table-component'
+import aggregateMatrix from './aggregateApplicationMatrix'
 
 Vue.use(TableComponent)
 
