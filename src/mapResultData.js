@@ -1,5 +1,5 @@
 function mapResultData (aggregatedMultimap) {
-  var mappedMultimap = {}
+  var mappedMultimap = []
   Object.keys(aggregatedMultimap).forEach(application => {
     mappedMultimap.push({
       appId: application,
