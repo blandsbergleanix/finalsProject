@@ -16,20 +16,17 @@
 <script>
 import Vue from 'vue'
 import TableComponent from 'vue-table-component'
-import aggregateMatrix from './aggregateApplicationMatrix'
+import mapResultData from './mapResultData'
+let matrix = require('../data/sampleAggregatedMatrix')
 
 Vue.use(TableComponent)
 
 export default {
   name: 'App',
   data () {
+    console.log(matrix)
     return {
-      tableData: [
-        { appId: '1', providing: 0, consuming: 1, total: 1 },
-        { appId: '2', providing: 2, consuming: 0, total: 2 },
-        { appId: '3', providing: 0, consuming: 1, total: 1 }
-      ]
-    }
+      tableData: mapResultData(matrix)}
   },
 
   mounted () {

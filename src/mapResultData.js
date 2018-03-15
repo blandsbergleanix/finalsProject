@@ -1,4 +1,4 @@
-function mapResultData (aggregatedMultimap) {
+export default function mapResultData (aggregatedMultimap) {
   var mappedMultimap = []
   Object.keys(aggregatedMultimap).forEach(application => {
     mappedMultimap.push({
@@ -10,5 +10,3 @@ function mapResultData (aggregatedMultimap) {
   })
   return mappedMultimap
 }
-
-module.exports = mapResultData
