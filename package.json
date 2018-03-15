@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@leanix/reporting": "^0.2.2",
-    "vue": "^2.5.2"
+    "moment": "^2.21.0",
+    "vue": "^2.5.2",
+    "vue-table-component": "^1.9.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -44,6 +46,7 @@
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
