@@ -1,7 +1,13 @@
 var createConsumingMatrix = require('../../src/createConsumerMatrix')
 
 test('Sample provider (Z1) expected result', () => {
-  var providingMatrix = {'2': ['1', '3']}
+  var providingMatrix = { '2': ['1', '3'] }
+  // TODO: Rename objects
+  /* var providingMatrix2 = {
+      id: '2',
+      providedAplications: ['1', '3']
+    }
+    */
   expect(createConsumingMatrix(providingMatrix)).toEqual({
     '1': ['2'],
     '3': ['2']
