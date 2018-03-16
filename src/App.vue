@@ -50,12 +50,11 @@ export default {
         this.graphQLMappedData = res.allFactSheets.edges
           .map(edge => edge.node)
           .reduce((accumulator, factSheet) => {
-            const providedBy = factSheet.relInterfaceToProviderApplication.edges.map(edge => edge.node.factSheet.id)
+            const providedBy = factSheet.relInterfaceToProviderApplication.edges.map(edge => edge.node.factSheet.id).shift()
             const consumedBy = factSheet.relInterfaceToConsumerApplication.edges.map(edge => edge.node.factSheet.id)
             accumulator.push({ id: factSheet.id, providedBy, consumedBy })
             return accumulator
           }, [])
-        // this.graphQLMappedData = res.allFactSheets.edges.map(edge => edge.node).map(factSheet => factSheet.id)^^
       })
       .catch(err => {
         this.graphQLData = err

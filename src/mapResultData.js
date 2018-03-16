@@ -10,3 +10,5 @@ export default function mapResultData (aggregatedMultimap) {
   })
   return mappedMultimap
 }
+
+module.exports = mapResultData
