@@ -24,7 +24,6 @@ Vue.use(TableComponent)
 export default {
   name: 'App',
   data () {
-    console.log(matrix)
     return {
       tableData: mapResultData(matrix)}
   },
