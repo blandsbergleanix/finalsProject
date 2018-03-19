@@ -1,4 +1,4 @@
-function aggregateApplicationMatrix (providingMultimap, consumingMultimap) {
+export default function aggregateApplicationMatrix (providingMultimap, consumingMultimap) {
   var aggregatedMultimap = {}
   // create list of applications from providerMultimap, add number of provided applications
   Object.keys(providingMultimap).forEach(provider => {
@@ -20,4 +20,4 @@ function aggregateApplicationMatrix (providingMultimap, consumingMultimap) {
   return aggregatedMultimap
 }
 
-module.exports = aggregateApplicationMatrix
+// module.exports = aggregateApplicationMatrix

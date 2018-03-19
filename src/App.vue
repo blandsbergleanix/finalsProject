@@ -1,6 +1,6 @@
 <template>
   <div id='app'>
-    <!--
+
 <table-component
      :data='tableData'
      sort-by='total'
@@ -11,9 +11,11 @@
      <table-column show='consuming' label='Consumed by' data-type='numeric'></table-column>
      <table-column show='total' label='Total number' data-type='numeric'></table-column>
  </table-component>
+
+ <!--
+   <pre>{{graphQLData}}</pre>
+  <pre>{{graphQLMappedData}}</pre>
  -->
- <pre>{{graphQLData}}</pre>
- <pre>{{graphQLMappedData}}</pre>
   </div>
 </template>
 
@@ -22,7 +24,7 @@ import Vue from 'vue'
 import TableComponent from 'vue-table-component'
 import graphqlQueries from './graphqlQueries'
 import mapResultData from './mapResultData'
-let matrix = require('../data/sampleAggregatedMatrix')
+import controller from './controller'
 
 Vue.use(TableComponent)
 
@@ -30,12 +32,16 @@ export default {
   name: 'App',
   data () {
     return {
-      tableData: mapResultData(matrix),
-      graphQLData: {},
-      graphQLMappedData: {}
+      graphQLMappedData: []
     }
   },
-
+  computed: {
+    tableData () {
+      const computedResult = controller(this.graphQLMappedData)
+      const tableData = mapResultData(computedResult)
+      return tableData
+    }
+  },
   mounted () {
     this.$lx.init().then(setup => {
       this.$lx.ready({})
@@ -77,14 +83,7 @@ export default {
 </style>
 
 <style lang='stylus'>
-@import './stylus/main'
-
-#app {
-  display: flex
-  flex-flow: row
-  justify-content: space-around
-  height: calc(100vh - 1rem)
-  padding: 1rem
-  box-sizing: border-box
-}
+@import './stylus/table-component'
+.table-component__table
+  width 100%
 </style>

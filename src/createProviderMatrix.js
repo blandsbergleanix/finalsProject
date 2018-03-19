@@ -1,4 +1,4 @@
-function createProviderMatrix (interfaces) {
+export default function createProviderMatrix (interfaces) {
   var providingMultiMap = {}
   // TODO extract providingMultiMap[providerId] into variable
   interfaces.forEach(interfaceNode => {
@@ -18,4 +18,4 @@ function createProviderMatrix (interfaces) {
 
   return providingMultiMap
 }
-module.exports = createProviderMatrix
+// module.exports = createProviderMatrix

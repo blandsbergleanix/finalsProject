@@ -1,4 +1,4 @@
-function createConsumerMatrix (providingMultimap) {
+export default function createConsumerMatrix (providingMultimap) {
   var consumingMultimap = {}
   Object.keys(providingMultimap).forEach(providerId => {
     var consumerIds = providingMultimap[providerId]
@@ -14,4 +14,4 @@ function createConsumerMatrix (providingMultimap) {
   })
   return consumingMultimap
 }
-module.exports = createConsumerMatrix
+// module.exports = createConsumerMatrix
