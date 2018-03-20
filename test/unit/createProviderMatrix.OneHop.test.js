@@ -1,5 +1,5 @@
-var samples = require('../../data/sampleStructures')
-var providingMatrix = require('../../src/createProviderMatrix')
+import samples from '../../data/sampleStructures'
+import providingMatrix from '../../src/createProviderMatrix'
 
 test('Sample data Z1 expected result', () => {
   expect(providingMatrix(samples.interfaceStructureZ1)).toEqual({

@@ -35,6 +35,7 @@ export default {
       graphQLMappedData: []
     }
   },
+  // TODO: rename controller to service
   computed: {
     tableData () {
       const computedResult = controller(this.graphQLMappedData)

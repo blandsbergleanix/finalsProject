@@ -1,4 +1,4 @@
-var createConsumingMatrix = require('../../src/createConsumerMatrix')
+import createConsumingMatrix from '../../src/createConsumerMatrix'
 
 test('Sample provider (Z1) expected result', () => {
   var providingMatrix = { '2': ['1', '3'] }

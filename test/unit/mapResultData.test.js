@@ -1,4 +1,4 @@
-var mapResultDataTest = require('../../src/mapResultData')
+import mapResultDataTest from '../../src/mapResultData'
 
 test('Sample aggregated Matrix (Z1) expected result', () => {
   var aggregatedMatrix = {
