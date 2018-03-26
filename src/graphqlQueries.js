@@ -1,5 +1,5 @@
 export default {
-  ALLFACTSHEETS: `query($factSheetType:FactSheetType){
+  LISTOFINTERFACES: `query($factSheetType:FactSheetType){
     allFactSheets(factSheetType: $factSheetType) {
       edges {
         node {

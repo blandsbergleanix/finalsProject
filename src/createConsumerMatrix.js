@@ -14,4 +14,3 @@ export default function createConsumerMatrix (providingMultimap) {
   })
   return consumingMultimap
 }
-// module.exports = createConsumerMatrix

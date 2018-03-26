@@ -18,4 +18,3 @@ export default function createProviderMatrix (interfaces) {
 
   return providingMultiMap
 }
-// module.exports = createProviderMatrix

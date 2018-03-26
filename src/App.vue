@@ -10,10 +10,10 @@
      <table-column show='providing' label='Providing to' data-type='numeric'></table-column>
      <table-column show='consuming' label='Consumed by' data-type='numeric'></table-column>
      <table-column show='total' label='Total number' data-type='numeric'></table-column>
- </table-component>
+</table-component>
 
- <!--
-   <pre>{{graphQLData}}</pre>
+ <!-- For testing purposes
+  <pre>{{graphQLData}}</pre>
   <pre>{{graphQLMappedData}}</pre>
  -->
   </div>
@@ -47,11 +47,11 @@ export default {
     this.$lx.init().then(setup => {
       this.$lx.ready({})
     })
-    const variables = {
+    const variableFactsheetTypes = {
       factSheetType: 'Interface'
     }
     this.$lx
-      .executeGraphQL(graphqlQueries.ALLFACTSHEETS, variables)
+      .executeGraphQL(graphqlQueries.LISTOFINTERFACES, variableFactsheetTypes)
       .then(res => {
         this.graphQLData = res
         this.graphQLMappedData = res.allFactSheets.edges
