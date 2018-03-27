@@ -6,7 +6,7 @@ import aggregateApplicationMatrix from './aggregateApplicationMatrix'
 // let createConsumerMatrix = require('./createConsumerMatrix')
 // let aggregateApplicationMatrix = require('./aggregateApplicationMatrix')
 
-export default function controller (graphQLMappedData) {
+export default function service (graphQLMappedData) {
   let providerMatrix = createProviderMatrix(graphQLMappedData)
   let consumerMatrix = createConsumerMatrix(providerMatrix)
   return aggregateApplicationMatrix(providerMatrix, consumerMatrix)

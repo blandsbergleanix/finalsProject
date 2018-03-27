@@ -27,5 +27,15 @@ export default {
         }
       }
     }
+  }`,
+  LISTOFAPPLICATIONS: `query($factSheetType:FactSheetType){
+    allFactSheets(factSheetType: $factSheetType) {
+      edges {
+        node {
+          name
+          id
+        }
+      }
+    }
   }`
 }

@@ -24,7 +24,7 @@ import Vue from 'vue'
 import TableComponent from 'vue-table-component'
 import graphqlQueries from './graphqlQueries'
 import mapResultData from './mapResultData'
-import controller from './controller'
+import service from './service'
 
 Vue.use(TableComponent)
 
@@ -35,10 +35,10 @@ export default {
       graphQLMappedData: []
     }
   },
-  // TODO: rename controller to service
+  // TODO: rename service to service
   computed: {
     tableData () {
-      const computedResult = controller(this.graphQLMappedData)
+      const computedResult = service(this.graphQLMappedData)
       const tableData = mapResultData(computedResult)
       return tableData
     }
