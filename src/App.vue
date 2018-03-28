@@ -1,12 +1,11 @@
 <template>
   <div id='app'>
-
 <table-component
      :data='tableData'
      sort-by='total'
      sort-order='desc'
      >
-     <table-column show='appId' label='Application ID'></table-column>
+     <table-column show='appName' label='Application ID'></table-column>
      <table-column show='providing' label='Providing to' data-type='numeric'></table-column>
      <table-column show='consuming' label='Consumed by' data-type='numeric'></table-column>
      <table-column show='total' label='Total number' data-type='numeric'></table-column>
@@ -23,6 +22,7 @@
 import Vue from 'vue'
 import TableComponent from 'vue-table-component'
 import graphqlQueries from './graphqlQueries'
+import mergeTableData from './mergeTableData'
 import mapResultData from './mapResultData'
 import service from './service'
 
@@ -32,40 +32,74 @@ export default {
   name: 'App',
   data () {
     return {
-      graphQLMappedData: []
+      mergedTableData: []
     }
   },
-  // TODO: rename service to service
   computed: {
     tableData () {
-      const computedResult = service(this.graphQLMappedData)
-      const tableData = mapResultData(computedResult)
+      const tableData = mapResultData(this.mergedTableData)
+      console.log('tableData', tableData)
       return tableData
+    }
+  },
+
+  methods: {
+    getInterfaces () {
+      return new Promise((resolve, reject) => {
+        this.$lx.executeGraphQL(graphqlQueries.LISTOFINTERFACES, {factSheetType: 'Interface'})
+          .then(res => {
+            const graphQLMappedData = res.allFactSheets.edges
+              .map(edge => edge.node)
+              .reduce((accumulator, factSheet) => {
+                const providedBy = factSheet.relInterfaceToProviderApplication.edges
+                  .map(edge => edge.node.factSheet.id)
+                  .shift()
+                const consumedBy = factSheet.relInterfaceToConsumerApplication.edges.map(
+                  edge => edge.node.factSheet.id
+                )
+                accumulator.push({ id: factSheet.id, providedBy, consumedBy })
+                return accumulator
+              }, [])
+            const serviceResults = service(graphQLMappedData)
+            const ids = serviceResults.ids
+            this.graphQLData = serviceResults.result
+            resolve({ids, mappedData: this.graphQLData})
+          })
+          .catch(err => reject(err))
+      })
+    },
+    getApplications (ids) {
+      return new Promise((resolve, reject) => {
+        this.$lx.executeGraphQL(graphqlQueries.LISTOFAPPLICATIONS, {filter: {ids}})
+          .then(res => {
+            const listOfApps = res.allFactSheets.edges
+              .map(edge => edge.node)
+              .reduce((accumulator, node) => {
+                accumulator[node.id] = node.name
+                return accumulator
+              }, {})
+            resolve(listOfApps)
+          })
+          .catch(err => reject(err))
+      })
     }
   },
   mounted () {
     this.$lx.init().then(setup => {
       this.$lx.ready({})
     })
-    const variableFactsheetTypes = {
-      factSheetType: 'Interface'
-    }
-    this.$lx
-      .executeGraphQL(graphqlQueries.LISTOFINTERFACES, variableFactsheetTypes)
-      .then(res => {
-        this.graphQLData = res
-        this.graphQLMappedData = res.allFactSheets.edges
-          .map(edge => edge.node)
-          .reduce((accumulator, factSheet) => {
-            const providedBy = factSheet.relInterfaceToProviderApplication.edges.map(edge => edge.node.factSheet.id).shift()
-            const consumedBy = factSheet.relInterfaceToConsumerApplication.edges.map(edge => edge.node.factSheet.id)
-            accumulator.push({ id: factSheet.id, providedBy, consumedBy })
-            return accumulator
-          }, [])
+
+    let graphQLMappedData = []
+
+    this.getInterfaces()
+      .then(({ids, mappedData}) => {
+        graphQLMappedData = mappedData
+        return this.getApplications(ids)
       })
-      .catch(err => {
-        this.graphQLData = err
+      .then(listOfApps => {
+        this.mergedTableData = mergeTableData(graphQLMappedData, listOfApps)
       })
+      .catch(err => console.log(err))
   }
 }
 </script>
@@ -76,9 +110,9 @@ export default {
 #app {
   display: flex
   flex-flow: row
-  justify-content: space-around;
+  justify-content: space-around
   height: calc(100vh - 1rem)
-  padding: 1rem;
+  padding: 1rem
   box-sizing: border-box
 }
 </style>

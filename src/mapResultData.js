@@ -2,7 +2,7 @@ export default function mapResultData (aggregatedMultimap) {
   var mappedMultimap = []
   Object.keys(aggregatedMultimap).forEach(application => {
     mappedMultimap.push({
-      appId: application,
+      appName: aggregatedMultimap[application].name,
       providing: aggregatedMultimap[application].providing,
       consuming: aggregatedMultimap[application].consuming,
       total: aggregatedMultimap[application].total

@@ -2,12 +2,12 @@ export default function aggregateApplicationMatrix (providingMultimap, consuming
   var aggregatedMultimap = {}
   // create list of applications from providerMultimap, add number of provided applications
   Object.keys(providingMultimap).forEach(provider => {
-    aggregatedMultimap[provider] = {providing: providingMultimap[provider].length, consuming: 0, total: 0}
+    aggregatedMultimap[provider] = {providing: providingMultimap[provider].length, consuming: 0, total: 0, name: ''}
   })
   // add missing applications from consumerMultimap, add number of consumed applications
   Object.keys(consumingMultimap).forEach(consumer => {
     if (aggregatedMultimap[consumer] === undefined) {
-      aggregatedMultimap[consumer] = { providing: 0, consuming: consumingMultimap[consumer].length, total: 0 }
+      aggregatedMultimap[consumer] = { providing: 0, consuming: consumingMultimap[consumer].length, total: 0, name: '' }
     } else {
       aggregatedMultimap[consumer].consuming = consumingMultimap[consumer].length
     }

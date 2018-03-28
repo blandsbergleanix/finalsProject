@@ -9,7 +9,7 @@ export default {
               edges {
                 node {
                   factSheet {
-                    id
+                    id   
                   }
                 }
               }
@@ -28,8 +28,8 @@ export default {
       }
     }
   }`,
-  LISTOFAPPLICATIONS: `query($factSheetType:FactSheetType){
-    allFactSheets(factSheetType: $factSheetType) {
+  LISTOFAPPLICATIONS: `query($filter:FilterInput){
+    allFactSheets(filter: $filter) {
       edges {
         node {
           name

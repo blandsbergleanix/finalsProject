@@ -1,8 +1,8 @@
 export default function createProviderMatrix (interfaces) {
-  var providingMultiMap = {}
+  let providingMultiMap = {}
   // TODO extract providingMultiMap[providerId] into variable
   interfaces.forEach(interfaceNode => {
-    var providerId = interfaceNode.providedBy
+    let providerId = interfaceNode.providedBy
     if (providingMultiMap[providerId] === undefined) {
       // add consumer as new array
       providingMultiMap[providerId] = interfaceNode.consumedBy
