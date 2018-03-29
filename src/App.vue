@@ -1,5 +1,6 @@
 <template>
   <div id='app'>
+    <bar-chart />
 <table-component
      :data='tableData'
      sort-by='total'
@@ -20,6 +21,7 @@
 
 <script>
 import Vue from 'vue'
+import BarChart from './components/barchart'
 import TableComponent from 'vue-table-component'
 import graphqlQueries from './graphqlQueries'
 import mergeTableData from './mergeTableData'
@@ -30,6 +32,7 @@ Vue.use(TableComponent)
 
 export default {
   name: 'App',
+  components: {BarChart},
   data () {
     return {
       mergedTableData: []
