@@ -38,7 +38,6 @@ export default {
   computed: {
     tableData () {
       const tableData = mapResultData(this.mergedTableData)
-      console.log('tableData', tableData)
       return tableData
     }
   },

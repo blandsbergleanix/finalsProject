@@ -16,7 +16,7 @@ export default function aggregateApplicationMatrix (providingMultimap, consuming
   Object.keys(aggregatedMultimap).forEach(application => {
     aggregatedMultimap[application].total = aggregatedMultimap[application].providing + aggregatedMultimap[application].consuming
   })
-
+  console.log(aggregatedMultimap)
   return aggregatedMultimap
 }
 
