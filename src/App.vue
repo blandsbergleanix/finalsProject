@@ -1,16 +1,16 @@
 <template>
   <div id='app'>
-    <bar-chart />
-<table-component
-     :data='tableData'
-     sort-by='total'
-     sort-order='desc'
-     >
-     <table-column show='appName' label='Application ID'></table-column>
-     <table-column show='providing' label='Providing to' data-type='numeric'></table-column>
-     <table-column show='consuming' label='Consumed by' data-type='numeric'></table-column>
-     <table-column show='total' label='Total number' data-type='numeric'></table-column>
-</table-component>
+    <bar-chart class="card" :chartData="tableData"/>
+    <table-component
+        :data='tableData'
+        sort-by='total'
+        sort-order='desc'
+        >
+        <table-column show='appName' label='Application ID'></table-column>
+        <table-column show='providing' label='Providing to' data-type='numeric'></table-column>
+        <table-column show='consuming' label='Consumed by' data-type='numeric'></table-column>
+        <table-column show='total' label='Total number' data-type='numeric'></table-column>
+    </table-component>
 
  <!-- For testing purposes
   <pre>{{graphQLData}}</pre>
@@ -108,15 +108,18 @@ export default {
 
 <style lang='stylus' scoped>
 @import './stylus/main'
+@import './stylus/material-color'
 
 #app {
   display: flex
-  flex-flow: row
+  flex-flow: column
   justify-content: space-around
+  align-items center
   height: calc(100vh - 1rem)
   padding: 1rem
   box-sizing: border-box
 }
+
 </style>
 
 <style lang='stylus'>

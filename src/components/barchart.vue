@@ -4,22 +4,45 @@ import 'chartjs-plugin-datalabels'
 
 export default {
   extends: Bar,
-  mounted () {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  props: ['chartData'],
+  data () {
+    return {
+      labels: [],
       datasets: [
         {
           label: 'Applications provided',
           backgroundColor: 'green',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          data: []
         },
         {
           label: 'Applications consumed',
           backgroundColor: 'red',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          data: []
         }
       ]
+    }
+  },
+  watch: {
+    chartData: function (val) {
+      const sortingFunction = (a, b) => b.total - a.total
+      const data = val.sort(sortingFunction)
+        .slice(0, 5)
+        .reduce((accumulator, application) => {
+          Object.keys(accumulator).forEach(key => accumulator[key].push(application[key]))
+          return accumulator
+        }, { appName: [], providing: [], consuming: [] })
+      this.labels = data.appName
+      this.datasets[0].data = data.providing
+      this.datasets[1].data = data.consuming
+      this.$data._chart.data = { labels: this.labels, datasets: this.datasets }
+      this.$data._chart.update()
+    }
+  },
+  mounted () {
+    // Overwriting base render method with actual data.
+    this.renderChart({
+      labels: this.labels,
+      datasets: this.datasets
     }, {
       plugins: {
         datalabels: {
@@ -34,7 +57,10 @@ export default {
       scales: {
         xAxes: [
           {
-            stacked: true
+            stacked: true,
+            ticks: {
+              autoSkip: false
+            }
           }
         ],
         yAxes: [

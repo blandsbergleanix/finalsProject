@@ -11,7 +11,6 @@ import createMultihopProviderMatrix from './createMultihopProviderMatrix'
 export default function service (graphQLMappedData) {
   let providerMatrix = createProviderMatrix(graphQLMappedData)
   let multihopProviderMatrix = createMultihopProviderMatrix(providerMatrix)
-  console.log(multihopProviderMatrix)
   let consumerMatrix = createConsumerMatrix(multihopProviderMatrix)
   let result = aggregateApplicationMatrix(providerMatrix, consumerMatrix)
   let ids = getApplicationIds(providerMatrix, consumerMatrix)
