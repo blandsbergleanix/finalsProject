@@ -10,6 +10,6 @@ test('SinglehopMatrix expected result', () => {
   expect(createMultihopProviderMatrix(providerMatrix)).toEqual({
     'a': ['c', 'b'],
     'b': ['a', 'c'],
-    'c': ['a', 'b']
+    'c': ['b', 'a']
   })
 })
