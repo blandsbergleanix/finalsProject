@@ -28,8 +28,9 @@ export default function createMultihopProviderMatrix (providingMultimap) {
     Object.keys(providingMultimap).forEach(provider => {
       // cycle through values of providers (consumers)
       (providingMultimap[provider] || []).forEach(consumer => {
-      // cycles through values of provided appplications (consumer values)
-        providingMultimap[consumer].forEach(consumerValue => {
+        // cycles through values of provided appplications (consumer values)
+        (providingMultimap[consumer] || []).forEach(consumerValue => {
+          console.log(consumerValue)
           if (consumerValue === provider) { return }
           if (providingMultimap[provider].indexOf(consumerValue) > -1) {
             changesOccured = false

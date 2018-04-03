@@ -2,6 +2,7 @@ import createProviderMatrix from './createProviderMatrix'
 import createConsumerMatrix from './createConsumerMatrix'
 import aggregateApplicationMatrix from './aggregateApplicationMatrix'
 import getApplicationIds from './getApplicationIds'
+import createMultihopProviderMatrix from './createMultihopProviderMatrix'
 
 // let createProviderMatrix = require('./createProviderMatrix')
 // let createConsumerMatrix = require('./createConsumerMatrix')
@@ -9,7 +10,9 @@ import getApplicationIds from './getApplicationIds'
 
 export default function service (graphQLMappedData) {
   let providerMatrix = createProviderMatrix(graphQLMappedData)
-  let consumerMatrix = createConsumerMatrix(providerMatrix)
+  let multihopProviderMatrix = createMultihopProviderMatrix(providerMatrix)
+  console.log(multihopProviderMatrix)
+  let consumerMatrix = createConsumerMatrix(multihopProviderMatrix)
   let result = aggregateApplicationMatrix(providerMatrix, consumerMatrix)
   let ids = getApplicationIds(providerMatrix, consumerMatrix)
 
