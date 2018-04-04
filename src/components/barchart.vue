@@ -10,12 +10,12 @@ export default {
       labels: [],
       datasets: [
         {
-          label: 'Applications provided',
+          label: 'Providing to',
           backgroundColor: 'green',
           data: []
         },
         {
-          label: 'Applications consumed',
+          label: 'Consumed by',
           backgroundColor: 'red',
           data: []
         }
