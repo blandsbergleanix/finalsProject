@@ -21,9 +21,9 @@ export default function createMultihopProviderMatrix (providingMultimap) {
       return accumulator
     }, providingMultimap)
   */
-
-  let changesOccured = true
-  while (changesOccured === true) {
+  let changesOccured = false
+  do {
+    changesOccured = false
     // cycle through providers
     Object.keys(providingMultimap).forEach(provider => {
       // cycle through values of providers (consumers)
@@ -32,14 +32,14 @@ export default function createMultihopProviderMatrix (providingMultimap) {
         (providingMultimap[consumer] || []).forEach(consumerValue => {
           if (consumerValue === provider) { return }
           if (providingMultimap[provider].indexOf(consumerValue) > -1) {
-            changesOccured = false
           } else {
             providingMultimap[provider].push(consumerValue)
+            changesOccured = true
           }
         })
       })
     })
-  }
+  } while (changesOccured === true)
 
   return providingMultimap
 }
