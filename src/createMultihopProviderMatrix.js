@@ -31,8 +31,7 @@ export default function createMultihopProviderMatrix (providingMultimap) {
         // cycles through values of provided appplications (consumer values)
         (providingMultimap[consumer] || []).forEach(consumerValue => {
           if (consumerValue === provider) { return }
-          if (providingMultimap[provider].indexOf(consumerValue) > -1) {
-          } else {
+          if (providingMultimap[provider].indexOf(consumerValue) === -1) {
             providingMultimap[provider].push(consumerValue)
             changesOccured = true
           }
