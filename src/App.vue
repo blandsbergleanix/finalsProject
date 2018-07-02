@@ -1,6 +1,6 @@
 <template>
   <div id='app'>
-    <bar-chart class="card" :chartData="tableData"/>
+    <bar-chart class="card" :chartData="tableData" :width="800"/>
     <table-component
         :data='tableData'
         sort-by='total'
@@ -11,11 +11,6 @@
         <table-column show='consuming' label='Consumed by' data-type='numeric'></table-column>
         <table-column show='total' label='Total number' data-type='numeric'></table-column>
     </table-component>
-
- <!-- For testing purposes
-  <pre>{{graphQLData}}</pre>
-  <pre>{{graphQLMappedData}}</pre>
- -->
   </div>
 </template>
 
@@ -72,9 +67,11 @@ export default {
     },
     getApplications (ids) {
       return new Promise((resolve, reject) => {
+        // initiates API call
         this.$lx.executeGraphQL(graphqlQueries.LISTOFAPPLICATIONS, {filter: {ids}})
-          .then(res => {
-            const listOfApps = res.allFactSheets.edges
+          // promise "fulfilled"
+          .then(result => {
+            const listOfApps = result.allFactSheets.edges
               .map(edge => edge.node)
               .reduce((accumulator, node) => {
                 accumulator[node.id] = node.name
@@ -82,13 +79,14 @@ export default {
               }, {})
             resolve(listOfApps)
           })
+          // promise "rejected"
           .catch(err => reject(err))
       })
     }
   },
   mounted () {
     this.$lx.init().then(setup => {
-      this.$lx.ready({})
+      this.$lx.ready({allowTableView: false})
     })
 
     let graphQLMappedData = []
@@ -115,7 +113,6 @@ export default {
   flex-flow: column
   justify-content: space-around
   align-items center
-  height: calc(100vh - 1rem)
   padding: 1rem
   box-sizing: border-box
 }

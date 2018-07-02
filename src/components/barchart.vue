@@ -26,7 +26,7 @@ export default {
     chartData: function (val) {
       const sortingFunction = (a, b) => b.total - a.total
       const data = val.sort(sortingFunction)
-        .slice(0, 5)
+        .slice(0, 10)
         .reduce((accumulator, application) => {
           Object.keys(accumulator).forEach(key => accumulator[key].push(application[key]))
           return accumulator

@@ -18,5 +18,3 @@ export default function aggregateApplicationMatrix (providingMultimap, consuming
   })
   return aggregatedMultimap
 }
-
-// module.exports = aggregateApplicationMatrix

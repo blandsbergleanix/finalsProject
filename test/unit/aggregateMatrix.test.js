@@ -24,8 +24,8 @@ test('Sample landscape (Z3) expected result', () => {
 })
 
 test('Sample landscape (Z2) expected result', () => {
-  var providingMatrix = { '1': ['3'], '2': ['1'], '3': ['2'] }
-  var consumingMatrix = { '1': ['2'], '2': ['3'], '3': ['1'] }
+  let providingMatrix = { '1': ['3'], '2': ['1'], '3': ['2'] }
+  let consumingMatrix = { '1': ['2'], '2': ['3'], '3': ['1'] }
   expect(aggregateApplicationMatrix(providingMatrix, consumingMatrix)).toEqual(
     { '1': { providing: 1, consuming: 1, total: 2, name: '' },
       '2': { providing: 1, consuming: 1, total: 2, name: '' },
